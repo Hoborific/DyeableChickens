@@ -54,7 +54,7 @@ public class EntityDyeableChicken extends EntityChicken{
             EnumDyeColor enumdyecolor = EnumDyeColor.byDyeDamage(itemstack.getMetadata());
 
             this.setFeatherColor(enumdyecolor);
-            itemstack.func_190918_g(1);
+            itemstack.shrink(1);
         }
         return super.processInteract(player, hand);
     }
@@ -82,7 +82,7 @@ public class EntityDyeableChicken extends EntityChicken{
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        this.setFeatherColor(getRandomSheepColor(this.worldObj.rand));
+        this.setFeatherColor(getRandomSheepColor(this.world.rand));
         return livingdata;
     }
     public void writeEntityToNBT(NBTTagCompound compound)

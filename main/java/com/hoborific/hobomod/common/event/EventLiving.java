@@ -25,7 +25,8 @@ public class EventLiving {
                 if(((EntityChicken) entity).isChild()){
                     newChicken.setGrowingAge(((EntityChicken) entity).getGrowingAge());
                 }
-                world.spawnEntityInWorld(newChicken);
+                //world.spawnEntityInWorld(newChicken);
+                world.spawnEntity(newChicken);
             }
             newChicken.playLivingSound();
             entity.setDead();
