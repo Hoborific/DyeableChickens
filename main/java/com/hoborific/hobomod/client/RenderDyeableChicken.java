@@ -1,8 +1,8 @@
 package com.hoborific.hobomod.client;
 
+import com.hoborific.hobomod.HoboMod;
 import com.hoborific.hobomod.common.entity.EntityDyeableChicken;
 import net.minecraft.client.model.ModelChicken;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -14,10 +14,11 @@ import javax.annotation.Nullable;
 
 @SideOnly(Side.CLIENT)
 public class RenderDyeableChicken extends RenderLiving<EntityDyeableChicken> {
-    private static final ResourceLocation CHICKEN_TEXTURES = new ResourceLocation("textures/entity/chicken.png");
-
+    private static final ResourceLocation CHICKEN_TEXTURES =   new ResourceLocation(HoboMod.MODID+":textures/entity/dyeablechicken/chicken_base.png");//new ResourceLocation("textures/entity/chicken.png");
+    public static final ResourceLocation CHICKEN_COAT_TEXTURES = new ResourceLocation(HoboMod.MODID+":textures/entity/dyeablechicken/chicken_coat.png"); //
     public RenderDyeableChicken(RenderManager renderManagerIn){
         super(renderManagerIn, new ModelChicken(), 0.3F); //renderManagerIn =p_i47211_1_
+        this.addLayer(new LayerDyeableChickenFeathers(this));
     }
 
     @Nullable
@@ -41,10 +42,8 @@ public class RenderDyeableChicken extends RenderLiving<EntityDyeableChicken> {
     }
     @Override
     public void doRender(EntityDyeableChicken entity, double x, double y, double z, float entityYaw, float partialTicks) {
-        float[] afloat = EntityDyeableChicken.getDyeRgb(entity.getFeatherColor());
-        GlStateManager.enableColorMaterial();
-        GlStateManager.color(afloat[0], afloat[1], afloat[2]);
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
+
     }
     protected void preRenderCallback(EntityDyeableChicken entity, float f)
     {
