@@ -25,6 +25,7 @@ public class EventLiving {
                 if(((EntityChicken) entity).isChild()){
                     newChicken.setGrowingAge(((EntityChicken) entity).getGrowingAge());
                 }
+                // You might want to consider spawning rare pre-colored chicken here
                 //world.spawnEntityInWorld(newChicken);
                 world.spawnEntity(newChicken);
             }
