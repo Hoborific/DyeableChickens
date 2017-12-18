@@ -3,6 +3,7 @@ package com.hoborific.hobomod.client;
 import com.hoborific.hobomod.common.ProxyCommon;
 import com.hoborific.hobomod.common.entity.EntityDyeableChicken;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 /**
@@ -10,13 +11,11 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
  */
 public class ProxyClient extends ProxyCommon {
     public void preInit() {
-
         super.preInit();
+        RenderingRegistry.registerEntityRenderingHandler(EntityDyeableChicken.class, RenderDyeableChicken::new);
     }
 
     public void init() {
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityDyeableChicken.class, new RenderDyeableChicken(Minecraft.getMinecraft().getRenderManager()));
         super.init();
     }
 
