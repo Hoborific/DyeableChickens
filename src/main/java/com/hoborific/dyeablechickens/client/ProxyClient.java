@@ -9,14 +9,11 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
  */
 public class ProxyClient extends ProxyCommon {
     public void preInit() {
-
-        super.preInit();
         RenderingRegistry.registerEntityRenderingHandler(EntityDyeableChicken.class, RenderDyeableChicken::new);
+        super.preInit();
     }
 
     public void init() {
-
-        //RenderingRegistry.registerEntityRenderingHandler(EntityDyeableChicken.class, new RenderDyeableChicken(Minecraft.getMinecraft().getRenderManager()));
         super.init();
     }
 

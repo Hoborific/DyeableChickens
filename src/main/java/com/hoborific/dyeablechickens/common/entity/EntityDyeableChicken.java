@@ -46,10 +46,7 @@ public class EntityDyeableChicken extends EntityChicken{
         this.inventoryCrafting.setInventorySlotContents(0, new ItemStack(Items.DYE));
         this.inventoryCrafting.setInventorySlotContents(1, new ItemStack(Items.DYE));
     }
-    private static final Map<EnumDyeColor, float[]> DYE_TO_RGB = Maps.newEnumMap(EnumDyeColor.class);
     private static final DataParameter<Byte> DYE_COLOR = EntityDataManager.createKey(EntityDyeableChicken.class, DataSerializers.BYTE);
-
-
 
     public boolean processInteract(EntityPlayer player, EnumHand hand){
         EntityPlayer p = player;
@@ -59,16 +56,11 @@ public class EntityDyeableChicken extends EntityChicken{
             this.setFeatherColor(color.get());
             itemstack.shrink(1);
             p.swingArm(hand);
-            return true;
         }
 
         return super.processInteract(player, hand);
     }
 
-    public static float[] getDyeRgb(EnumDyeColor dyeColor)
-    {
-        return DYE_TO_RGB.get(dyeColor);
-    }
     public EnumDyeColor getFeatherColor()
     {
         return EnumDyeColor.byMetadata(this.dataManager.get(DYE_COLOR) & 15);
@@ -88,6 +80,7 @@ public class EntityDyeableChicken extends EntityChicken{
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
+        //this.setFeatherColor(getRandomSheepColor(this.world.rand));
         this.setFeatherColor(EnumDyeColor.byDyeDamage(this.world.rand.nextInt(16)));
         return livingdata;
     }
@@ -102,34 +95,28 @@ public class EntityDyeableChicken extends EntityChicken{
         super.readEntityFromNBT(compound);
         this.setFeatherColor(EnumDyeColor.byMetadata(compound.getByte("Color")));
     }
+
+
+
+    private EnumDyeColor getDyeColorMixFromParents(EntityAnimal father, EntityAnimal mother) {
+        EnumDyeColor i = ((EntityDyeableChicken) father).getFeatherColor();
+        EnumDyeColor j = ((EntityDyeableChicken) mother).getFeatherColor();
+        this.inventoryCrafting.setInventorySlotContents(0, new ItemStack(Items.DYE, 1, i.getDyeDamage()));
+        this.inventoryCrafting.setInventorySlotContents(1, new ItemStack(Items.DYE, 1, j.getDyeDamage()));
+        ItemStack result = CraftingManager.findMatchingResult(this.inventoryCrafting, ((EntityDyeableChicken) father).world);
+
+        if (result.getItem() == Items.DYE) {
+            return EnumDyeColor.byDyeDamage(result.getMetadata());
+        } else {
+            return this.world.rand.nextBoolean() ? i : j;
+        }
+    }
     public EntityDyeableChicken createChild(EntityAgeable ageable)
     {
         EntityDyeableChicken entitydyeablechicken = (EntityDyeableChicken)ageable;
         EntityDyeableChicken entitydyeablechicken1 = new EntityDyeableChicken(this.world);
         entitydyeablechicken1.setFeatherColor(this.getDyeColorMixFromParents(this, entitydyeablechicken));
         return entitydyeablechicken1;
-    }
-
-
-    private EnumDyeColor getDyeColorMixFromParents(EntityAnimal father, EntityAnimal mother)
-    {
-        int i = ((EntityDyeableChicken)father).getFeatherColor().getDyeDamage();
-        int j = ((EntityDyeableChicken)mother).getFeatherColor().getDyeDamage();
-        this.inventoryCrafting.getStackInSlot(0).setItemDamage(i);
-        this.inventoryCrafting.getStackInSlot(1).setItemDamage(j);
-        ItemStack itemstack = CraftingManager.findMatchingResult(this.inventoryCrafting, ((EntityDyeableChicken)father).world);
-        int k;
-
-        if (itemstack.getItem() == Items.DYE)
-        {
-            k = itemstack.getMetadata();
-        }
-        else
-        {
-            k = this.world.rand.nextBoolean() ? i : j;
-        }
-
-        return EnumDyeColor.byDyeDamage(k);
     }
 
 }
