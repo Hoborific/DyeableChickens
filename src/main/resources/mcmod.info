@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hobomod",
+  "name": "Hobo's Dyeable Chickens",
+  "description": "Dyeable Chickens for your pleasure.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["hoborific"],
+  "credits": ",",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
