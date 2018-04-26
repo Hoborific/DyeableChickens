@@ -2,3 +2,6 @@ entity.EntityDyeableChicken.name=Dyeable Chicken
 item.EntityDyeableChicken.name=Dyeable Chicken
 item.ItemDyeableChickenPlacer=Dyeable Chicken
 entity.dyeablechickens.EntityDyeableChicken.name=Dyeable Chicken
+tile.jar.name="Jar"
+block.jar.name="Jarr"
+item.jar.name="Jarrr"

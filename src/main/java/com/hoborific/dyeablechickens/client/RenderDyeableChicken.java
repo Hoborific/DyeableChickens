@@ -1,7 +1,7 @@
 package com.hoborific.dyeablechickens.client;
 
 import com.hoborific.dyeablechickens.DyeableChickens;
-import com.hoborific.dyeablechickens.common.entity.EntityDyeableChicken;
+import com.hoborific.dyeablechickens.entity.*;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

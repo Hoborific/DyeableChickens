@@ -1,6 +1,6 @@
-package com.hoborific.dyeablechickens.common.event;
+package com.hoborific.dyeablechickens.event;
 
-import com.hoborific.dyeablechickens.common.entity.EntityDyeableChicken;
+import com.hoborific.dyeablechickens.entity.EntityDyeableChicken;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.world.World;

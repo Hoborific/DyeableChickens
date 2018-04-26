@@ -1,7 +1,8 @@
 package com.hoborific.dyeablechickens.client;
 
 import com.hoborific.dyeablechickens.common.ProxyCommon;
-import com.hoborific.dyeablechickens.common.entity.EntityDyeableChicken;
+import com.hoborific.dyeablechickens.entity.*;
+import com.hoborific.dyeablechickens.init.*;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 /**
@@ -14,6 +15,7 @@ public class ProxyClient extends ProxyCommon {
     }
 
     public void init() {
+        ModBlocks.registerRenders();
         super.init();
     }
 

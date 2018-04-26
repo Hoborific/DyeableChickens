@@ -1,8 +1,9 @@
 package com.hoborific.dyeablechickens.common;
 
 import com.hoborific.dyeablechickens.DyeableChickens;
-import com.hoborific.dyeablechickens.common.entity.EntityDyeableChicken;
-import com.hoborific.dyeablechickens.common.event.EventLiving;
+import com.hoborific.dyeablechickens.entity.EntityDyeableChicken;
+import com.hoborific.dyeablechickens.event.EventLiving;
+import com.hoborific.dyeablechickens.init.ModBlocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 public class ProxyCommon {
     public void preInit() {
 
+        ModBlocks.init();
     }
 
     public void init() {

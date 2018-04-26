@@ -1,6 +1,5 @@
-package com.hoborific.dyeablechickens.common.entity;
+package com.hoborific.dyeablechickens.entity;
 
-import com.google.common.collect.Maps;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -10,7 +9,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,10 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.DyeUtils;
 
 import javax.annotation.Nullable;
-import java.util.Map;
 import java.util.Optional;
-
-import static net.minecraft.entity.passive.EntitySheep.getRandomSheepColor;
 
 public class EntityDyeableChicken extends EntityChicken{
 

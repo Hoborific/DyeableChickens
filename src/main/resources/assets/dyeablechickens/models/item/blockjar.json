@@ -1,0 +1,6 @@
+{
+  "parent": "dyeablechickens:block/jar",
+  "textures": {
+      "all": "blocks/glass"
+  }
+}

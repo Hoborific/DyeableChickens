@@ -1,6 +1,6 @@
 package com.hoborific.dyeablechickens.client;
 
-import com.hoborific.dyeablechickens.common.entity.EntityDyeableChicken;
+import com.hoborific.dyeablechickens.entity.EntityDyeableChicken;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
